@@ -13,21 +13,21 @@ const {
 
 
 
-// api/user
+// api/users
 router
 .route('/')
 .get(getallusers)
 .post(newuser)
 
 
-// api/user/:userId
+// api/users/:userId
 router
 .route('/:userId')
 .get(getoneuser)
 .put(updateuser)
 .delete(deleteuser);
 
-// /api/user/:userId/friends/:friendId
+// /api/users/:userId/friends/:friendId
 router
 .route('/:userId/friends/:friendId')
 .post(newfriend)
@@ -35,4 +35,3 @@ router
 
 module.exports = router;
 
-// 62642ab59351bec30a30a062 62642aca9351bec30a30a064 62642ad09351bec30a30a066

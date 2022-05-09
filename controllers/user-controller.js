@@ -3,6 +3,12 @@ const { User } = require("../models");
 const userController = {
   getallusers(req, res) {
     User.find({})
+    .populate({
+      path: 'friends',
+      select: '-__v'
+    })
+    .select('-__v')
+    .sort({ _id: -1 })
       .then((userData) => res.json(userData))
       .catch((err) => {
         console.log(err);
@@ -17,6 +23,11 @@ const userController = {
 
   getoneuser({ params }, res) {
     User.findOne({ _id: params.userId })
+    .populate({
+      path: 'friends',
+      select: '-__v'
+    })
+    .select('-__v')
       .then((userData) => {
         if (!userData) {
           res.status(404).json({ message: "No user found with this id!" });
